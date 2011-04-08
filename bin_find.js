@@ -18,15 +18,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+// Description: Execute a binary search tree on an array of sorted items.
 
-(function($){
+// Takes three arguments, 
+// 1) `array` : an array containing the items to be searched, 
+// 2) `block` : a function which acts like an iterator and returns a set of values in an array for comparison, and 
+//      - block() should return an array of three values.  The first and last values work as a range, and the binary search tries to find 
+//        the value in the array that causes the middle number to fall within the range.
+//        Thus, returning [1,2,3] indicates that the solution has been found, returning [1,0,3] will cause the search tree to shift to the right,
+//        and returning [1,4,3] will cause it to shift to the left. 
+// 3) `start_pointer` : optional, a numeric index in the array, if you wish to begin the binary search at a point other than the center of the array
 
-// Execute a binary search tree on an array of sorted items.
-// Takes three arguments, an `array` containing the items to be
-// searched, a `block` function which acts like an iterator 
-// and returns a set of values in an array for comparison,
-// and an optional `start_pointer` index, if you want to start
-// the binary search at a point other than the center of the array
+
 
 function BinFind(array, block, start_pointer) {
   this.array  = array;
@@ -90,6 +93,10 @@ $.extend(BinFind.prototype, {
     return r;
   }
 });
+
+(function($){
+
+// Implements the above as a jQuery plugin:
 
 $.fn.bin_find = function(search_block, start_pointer){
   var bin_find = new BinFind($.makeArray(this), search_block, start_pointer);

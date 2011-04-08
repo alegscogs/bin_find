@@ -1,0 +1,30 @@
+BinFind
+
+Description: A javascript library for executing binary search trees in javascript, and a jquery plugin that implements it.
+
+Version: 0.1.0
+
+Author: Alex Cox
+
+Code: http://github.com/alegscogs/bin_find
+
+License: licensed under the MIT license
+
+
+BinFind
+
+  Description: Execute a binary search tree on an array of sorted items.
+
+  Takes three arguments, 
+  1) `array` : an array containing the items to be searched, 
+  2) `block` : a function which acts like an iterator and returns a set of values in an array for comparison, and 
+       - block() should return an array of three values.  The first and last values work as a range, and the binary search tries to find 
+         the value in the array that causes the middle number to fall within the range.
+         Thus, returning [1,2,3] indicates that the solution has been found, returning [1,0,3] will cause the search tree to shift to the right,
+         and returning [1,4,3] will cause it to shift to the left. 
+  3) `start_pointer` : optional, a numeric index in the array, if you wish to begin the binary search at a point other than the center of the array
+
+
+$.fn.bin_find
+
+  Description: Execute a binary search tree on a jquery collection.
